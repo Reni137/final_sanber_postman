@@ -23,7 +23,7 @@ jobs:
 
       - name: Run Postman Collection
         run: |
-          newman run postman_collection/Kasir Aja CRUD.postman_collection.json \
+          newman run postman_collection/KasirAjaCRUD.postman_collection.json \
             --env-var "base_Url=${{ secrets.BASE_URL }}" \
             --env-var "username=${{ secrets.USERNAME }}" \
             --env-var "password=${{ secrets.PASSWORD }}"
