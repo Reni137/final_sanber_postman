@@ -4,7 +4,7 @@
 		"name": "Kasir Aja CRUD",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "44381839",
-		"_collection_link": "https://reni-4547189.postman.co/workspace/Reni's-Workspace~48a88060-afd7-4631-8a45-4ebd6905b8fc/collection/44381839-aa5dd698-c524-4446-ab3f-56072ec5d3bf?action=share&source=collection_link&creator=44381839"
+		"_collection_link": "https://reni-4547189.postman.co/workspace/48a88060-afd7-4631-8a45-4ebd6905b8fc/collection/44381839-aa5dd698-c524-4446-ab3f-56072ec5d3bf?action=share&source=collection_link&creator=44381839"
 	},
 	"item": [
 		{
@@ -426,6 +426,60 @@
 					"path": [
 						"categories",
 						"{{category_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authentications",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Authentication berhasil ditambahkan\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"test_admin@example.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/authentications",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"authentications"
 					]
 				}
 			},
