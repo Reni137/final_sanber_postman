@@ -4,7 +4,7 @@
 		"name": "Kasir Aja CRUD",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "44381839",
-		"_collection_link": "https://reni-4547189.postman.co/workspace/48a88060-afd7-4631-8a45-4ebd6905b8fc/collection/44381839-aa5dd698-c524-4446-ab3f-56072ec5d3bf?action=share&source=collection_link&creator=44381839"
+		"_collection_link": "https://reni-4547189.postman.co/workspace/Reni's-Workspace~48a88060-afd7-4631-8a45-4ebd6905b8fc/collection/44381839-aa5dd698-c524-4446-ab3f-56072ec5d3bf?action=share&source=collection_link&creator=44381839"
 	},
 	"item": [
 		{
@@ -20,7 +20,18 @@
 							"\r",
 							"pm.test(\"Body matches string\", function () {\r",
 							"    pm.expect(pm.response.text()).to.include(\"Authentication berhasil ditambahkan\");\r",
-							"});"
+							"});\r",
+							"\r",
+							"pm.test(\"Assert refreshToken and accessToken should not undefined\", function () {\r",
+							"    var responseData = pm.response.json().data; // Fixed ReferenceError: response is not defined\r",
+							"    pm.expect(responseData).to.have.property('accessToken');\r",
+							"    pm.expect(responseData).to.have.property('refreshToken');\r",
+							"    pm.expect(responseData.accessToken).not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"fixedAccessToken\", pm.response.json().data.accessToken); // Fixed setting fixedAccessToken\r",
+							"pm.environment.set(\"fixedRefreshToken\", pm.response.json().data.refreshToken); // Fixed setting fixedRefreshToken\r",
+							""
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -104,7 +115,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{accessToken}}",
+							"value": "{{fixedAccessToken}}",
 							"type": "string"
 						}
 					]
@@ -169,7 +180,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{accessToken}}",
+							"value": "{{fixedAccessToken}}",
 							"type": "string"
 						}
 					]
@@ -211,7 +222,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{accessToken}}",
+							"value": "{{fixedAccessToken}}",
 							"type": "string"
 						}
 					]
@@ -262,7 +273,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{accessToken}}",
+							"value": "{{fixedAccessToken}}",
 							"type": "string"
 						}
 					]
@@ -314,7 +325,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{accessToken}}",
+							"value": "{{fixedAccessToken}}",
 							"type": "string"
 						}
 					]
@@ -372,7 +383,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{accessToken}}",
+							"value": "{{fixedAccessToken}}",
 							"type": "string"
 						}
 					]
@@ -414,7 +425,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{accessToken}}",
+							"value": "{{fixedAccessToken}}",
 							"type": "string"
 						}
 					]
@@ -465,7 +476,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{accessToken}}",
+							"value": "{{fixedAccessToken}}",
 							"type": "string"
 						}
 					]
